@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { MdDashboard } from 'react-icons/lib/md'
 
 interface IconProps {
-    active?: boolean
+    active: number
 }
 
 export const Container = styled.div`
@@ -34,10 +34,6 @@ export const DashboardIcon = styled(MdDashboard)<IconProps>`
     cursor: pointer;
     transition: all 0.3s ease;
 
-    &:hover {
-        color: ${props => props.theme.primary};
-    }
-
     ${props =>
         props.active &&
         css`
@@ -45,4 +41,8 @@ export const DashboardIcon = styled(MdDashboard)<IconProps>`
             color: ${props.theme.primary};
             box-shadow: 0px 0px 15px lightgray;
         `};
+
+    &:hover {
+        color: ${props => props.theme.primary};
+    }
 `

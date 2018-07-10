@@ -14,23 +14,23 @@ export class Sidebar extends React.Component {
             <Container>
                 <Icons>
                     <DashboardIcon
-                        active={active === 0}
+                        active={active === 0 ? 1 : 0}
                         onClick={() => this.handleClick(0)}
                     />
                     <DashboardIcon
-                        active={active === 1}
+                        active={active === 1 ? 1 : 0}
                         onClick={() => this.handleClick(1)}
                     />
                     <DashboardIcon
-                        active={active === 2}
+                        active={active === 2 ? 1 : 0}
                         onClick={() => this.handleClick(2)}
                     />
                     <DashboardIcon
-                        active={active === 3}
+                        active={active === 3 ? 1 : 0}
                         onClick={() => this.handleClick(3)}
                     />
                     <DashboardIcon
-                        active={active === 4}
+                        active={active === 4 ? 1 : 0}
                         onClick={() => this.handleClick(4)}
                     />
                 </Icons>
