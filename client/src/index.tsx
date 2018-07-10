@@ -1,11 +1,19 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
-import registerServiceWorker from './registerServiceWorker';
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
+import { injectGlobal } from 'styled-components'
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root') as HTMLElement
-);
-registerServiceWorker();
+import registerServiceWorker from './registerServiceWorker'
+import { Routes } from './Routes'
+
+// tslint:disable-next-line
+injectGlobal`
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500');
+    
+    body {
+        margin: 0px;
+        font-family: Montserrat;
+    }
+`
+
+ReactDOM.render(<Routes />, document.getElementById('root') as HTMLElement)
+registerServiceWorker()
