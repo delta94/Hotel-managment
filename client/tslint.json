@@ -6,6 +6,8 @@
     "rules": {
         "ordered-imports": false,
         "jsx-boolean-value": false,
-        "interface-name": false
+        "interface-name": false,
+        "member-access": false,
+        "jsx-no-lambda": false
     }
 }

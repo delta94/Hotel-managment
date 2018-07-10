@@ -1,9 +1,10 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { injectGlobal } from 'styled-components'
+import { injectGlobal, ThemeProvider } from 'styled-components'
 
 import registerServiceWorker from './registerServiceWorker'
 import { Routes } from './Routes'
+import { theme } from './Theme'
 
 // tslint:disable-next-line
 injectGlobal`
@@ -15,5 +16,10 @@ injectGlobal`
     }
 `
 
-ReactDOM.render(<Routes />, document.getElementById('root') as HTMLElement)
+ReactDOM.render(
+    <ThemeProvider theme={theme}>
+        <Routes />
+    </ThemeProvider>,
+    document.getElementById('root') as HTMLElement
+)
 registerServiceWorker()
