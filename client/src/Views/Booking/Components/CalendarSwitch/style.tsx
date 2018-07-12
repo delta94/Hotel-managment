@@ -19,14 +19,30 @@ export const Date = styled.p`
     user-select: none;
 `
 export const LeftArrow = styled(MdKeyboardArrowLeft)`
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
     color: gray;
-    font-size: 26px;
     margin-right: 20px;
     cursor: pointer;
+    transition: all 300ms ease;
+
+    &:hover {
+        background-color: white;
+        color: ${props => props.theme.primary};
+    }
 `
 export const RightArrow = styled(MdKeyboardArrowRight)`
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
     color: gray;
-    font-size: 26px;
     margin-left: 20px;
     cursor: pointer;
+    transition: all 300ms ease;
+
+    &:hover {
+        background-color: white;
+        color: ${props => props.theme.primary};
+    }
 `
