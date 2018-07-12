@@ -11,7 +11,6 @@ export const Container = styled.div`
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
     position: absolute;
     top: 0;
     left: 0;
@@ -19,16 +18,16 @@ export const Container = styled.div`
     box-shadow: 0px 0px 15px lightgray;
 `
 export const Icons = styled.div`
-    height: 500px;
+    height: 400px;
+    margin-top: 100px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 `
 export const DashboardIcon = styled(MdDashboard)<IconProps>`
-    width: 50px;
-    height: 50px;
-    padding: 5px;
-    font-size: 38px;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
     color: #b8b8c7;
     border-radius: 5px;
     cursor: pointer;
