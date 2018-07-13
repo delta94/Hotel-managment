@@ -8,6 +8,7 @@
         "jsx-boolean-value": false,
         "interface-name": false,
         "member-access": false,
-        "jsx-no-lambda": false
+        "jsx-no-lambda": false,
+        "no-console": false
     }
 }
