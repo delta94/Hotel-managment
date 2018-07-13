@@ -30,20 +30,20 @@ export const Column = styled.div<ColumnProps>`
     border-bottom: 2px solid #efefef;
 `
 export const Legend = Column.extend`
-    background-color: white;
+    background-color: ${({ active }) => (active ? '#e9f6fb' : 'transparent')};
 `
 export const Item = styled.div.attrs<ItemProps>({
     width: ({ length }: ItemProps) => (length ? length : 1)
 })`
     width: ${({ length }) => 100.5 * length + '%'};
-    height: 50px;
+    height: 40px;
     padding: 0 20px 0 20px;
     display: flex;
     align-items: center;
     position: absolute;
-    top: 0;
-    left: 100px;
-    border-radius: 2px;
+    top: 10;
+    left: 0;
+    border-radius: 1px;
     background-color: white;
     border-top: 3px solid #8090cd;
     box-shadow: 0px 0px 5px #e5e5e5;
