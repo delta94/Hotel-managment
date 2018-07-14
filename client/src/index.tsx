@@ -5,6 +5,7 @@ import { injectGlobal, ThemeProvider } from 'styled-components'
 import registerServiceWorker from './registerServiceWorker'
 import { Routes } from './Routes'
 import { theme } from './Theme'
+import { Provider } from 'unstated'
 
 // tslint:disable-next-line
 injectGlobal`
@@ -18,7 +19,9 @@ injectGlobal`
 
 ReactDOM.render(
     <ThemeProvider theme={theme}>
-        <Routes />
+        <Provider>
+            <Routes />
+        </Provider>
     </ThemeProvider>,
     document.getElementById('root') as HTMLElement
 )

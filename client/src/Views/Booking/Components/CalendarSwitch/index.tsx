@@ -1,32 +1,17 @@
 import * as React from 'react'
+import { Subscribe } from 'unstated'
+
+import { CalendarState } from '../../Containers/CalendarState'
 import { Container, Date, LeftArrow, RightArrow } from './style'
-import * as moment from 'moment'
 
-interface State {
-    counter: number
-}
-
-export class CalendarSwitch extends React.Component<{}, State> {
-    state = {
-        counter: 0
-    }
-
-    increment = () => this.setState(({ counter }) => ({ counter: counter + 1 }))
-
-    decrement = () => this.setState(({ counter }) => ({ counter: counter - 1 }))
-
-    render() {
-        const { counter } = this.state
-        const now = moment()
-            .add(counter, 'week')
-            .format('MMMM, YYYY')
-
-        return (
+export const CalendarSwitch: React.SFC = () => (
+    <Subscribe to={[CalendarState]}>
+        {(calendar: CalendarState) => (
             <Container>
-                <LeftArrow onClick={() => this.decrement()} />
-                <Date>{now}</Date>
-                <RightArrow onClick={() => this.increment()} />
+                <LeftArrow onClick={calendar.decrementWeek} />
+                <Date>{calendar.state.date.format('MMMM, YYYY')}</Date>
+                <RightArrow onClick={calendar.incrementWeek} />
             </Container>
-        )
-    }
-}
+        )}
+    </Subscribe>
+)
