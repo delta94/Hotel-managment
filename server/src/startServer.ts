@@ -1,5 +1,8 @@
 import { GraphQLServer } from 'graphql-yoga'
 
+import { createTestConn } from './testUtils/createTestConn'
+import { createTypeormConn } from './utils/createTypeormConn'
+
 export const startServer = async () => {
     const typeDefs = `
     type Query {
@@ -13,6 +16,12 @@ export const startServer = async () => {
         }
     }
 
+    if (process.env.NODE_ENV === 'test') {
+        await createTestConn(true)
+    } else {
+        await createTypeormConn()
+    }
+
     const options = {
         port: 4000,
         endpoint: '/graphql'
@@ -20,5 +29,6 @@ export const startServer = async () => {
 
     const server = new GraphQLServer({ typeDefs, resolvers })
 
-    server.start(options, () => console.log('Server is up'))
+    const app = await server.start(options, () => console.log('Server is up'))
+    return app
 }
