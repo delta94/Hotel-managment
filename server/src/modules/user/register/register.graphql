@@ -1,0 +1,12 @@
+type Mutation {
+    register(email: String!, password: String!): RegisterResponse!
+}
+
+type Query {
+    hello: String
+}
+
+type RegisterResponse {
+    ok: Boolean!
+    errors: [Error]
+}
