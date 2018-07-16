@@ -12,12 +12,12 @@ import {
 import { User } from '../../../entity/User'
 
 let conn: Connection
-beforeAll(async () => {
+beforeEach(async () => {
     conn = await createTestConn(true)
 })
 
-afterAll(async () => {
-    conn.close()
+afterEach(async () => {
+    await conn.close()
 })
 
 const url = process.env.TEST_HOST as string
@@ -56,6 +56,10 @@ describe('Register', () => {
         expect(response).toMatchObject({
             register: { ok: false, errors: [{ message: duplicateEmail }] }
         })
+
+        const user: any = await User.find({ where: { email } })
+
+        expect(user).toHaveLength(1)
     })
 
     it('check for bad email', async () => {
@@ -70,6 +74,10 @@ describe('Register', () => {
                 ]
             }
         })
+
+        const user: any = await User.find({ where: { email } })
+
+        expect(user).toHaveLength(0)
     })
 
     it('check for bad password', async () => {
@@ -81,6 +89,10 @@ describe('Register', () => {
                 errors: [{ message: passwordNotLongEnough }]
             }
         })
+
+        const user: any = await User.find({ where: { email } })
+
+        expect(user).toHaveLength(0)
     })
 
     it('check for bad email and password', async () => {
@@ -96,5 +108,9 @@ describe('Register', () => {
                 ]
             }
         })
+
+        const user: any = await User.find({ where: { email } })
+
+        expect(user).toHaveLength(0)
     })
 })
