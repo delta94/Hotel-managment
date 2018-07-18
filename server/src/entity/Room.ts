@@ -1,4 +1,5 @@
-import { Entity, BaseEntity, Column, PrimaryColumn } from 'typeorm'
+import { Entity, BaseEntity, Column, PrimaryColumn, ManyToMany } from 'typeorm'
+import { Reservation } from './Reservation'
 
 @Entity()
 export class Room extends BaseEntity {
@@ -7,4 +8,7 @@ export class Room extends BaseEntity {
     @Column() price: number
 
     @Column() people: number
+
+    @ManyToMany(() => Reservation, reservation => reservation.rooms)
+    reservations: Reservation[]
 }

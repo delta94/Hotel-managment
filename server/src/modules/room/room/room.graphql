@@ -2,6 +2,7 @@ type Room {
     roomNumber: Int!
     price: Int!
     people: Int!
+    reservations: [Reservation]
 }
 
 type Query {

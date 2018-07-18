@@ -1,0 +1,11 @@
+input ReservationInput {
+    userId: Int!
+    startDate: String!
+    endDate: String!
+    people: Int!
+    rooms: [Int!]
+}
+
+type Mutation {
+    newReservation(input: ReservationInput!): Boolean!
+}

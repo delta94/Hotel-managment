@@ -1,0 +1,11 @@
+type Reservation {
+    userId: Int!
+    startDate: String!
+    endDate: String!
+    people: String!
+    rooms: [Room!]
+}
+
+type Query {
+    reservations: [Reservation]
+}

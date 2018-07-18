@@ -23,7 +23,7 @@ export class Reservation extends BaseEntity {
 
     @Column() people: number
 
-    @ManyToMany(() => Room)
+    @ManyToMany(() => Room, room => room.reservations)
     @JoinTable()
     rooms: Room[]
 
