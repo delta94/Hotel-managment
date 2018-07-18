@@ -8,7 +8,12 @@ interface Props {
 
 export const Layout: React.SFC<Props> = ({ children }) => (
     <Container>
-        <Topbar />
+        <Topbar
+            routes={[
+                { name: 'Dashboard', path: '/' },
+                { name: 'Booking', path: '/booking' }
+            ]}
+        />
         {children}
     </Container>
 )

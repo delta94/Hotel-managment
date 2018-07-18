@@ -9,7 +9,7 @@ import { Provider } from 'unstated'
 
 // tslint:disable-next-line
 injectGlobal`
-    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500');
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600');
     
     body {
         margin: 0px;
