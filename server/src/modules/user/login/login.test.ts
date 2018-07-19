@@ -35,7 +35,7 @@ const loginMutation = (e: string, p: string) => `
 
 let conn: Connection
 beforeAll(async () => {
-    conn = await createTestConn(true)
+    conn = await createTestConn()
 
     await request(url, registerMutation(email, password))
 })

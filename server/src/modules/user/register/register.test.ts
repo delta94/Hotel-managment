@@ -13,11 +13,11 @@ import { User } from '../../../entity/User'
 
 let conn: Connection
 beforeEach(async () => {
-    conn = await createTestConn(true)
+    conn = await createTestConn()
 })
 
 afterEach(async () => {
-    await conn.close()
+    conn.close()
 })
 
 const url = process.env.TEST_HOST as string

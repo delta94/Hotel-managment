@@ -1,10 +1,34 @@
 import { GraphQLServer } from 'graphql-yoga'
+import * as jwt from 'jsonwebtoken'
+
 import { generateSchema } from './utils/generateSchema'
 import { createTypeormConn } from './utils/createTypeormConn'
 import { createTestConn } from './testUtils/createTestConn'
 
+const addUser = (req: any, _: any, next: any) => {
+    const token = req.headers.token
+    const SECRET = process.env.SECRET as string
+    if (token) {
+        const user = jwt.verify(token, SECRET)
+        req.user = user
+    }
+    next()
+}
+
 export const startServer = async () => {
-    const server = new GraphQLServer({ schema: generateSchema() })
+    const server = new GraphQLServer({
+        schema: generateSchema(),
+        context: (req: any) => {
+            if (req.request.user) {
+                return {
+                    userId: req.request.user.id
+                }
+            }
+            return
+        }
+    })
+
+    server.use(addUser)
 
     if (process.env.NODE_ENV === 'test') {
         await createTestConn(true)
