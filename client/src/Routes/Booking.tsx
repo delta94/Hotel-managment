@@ -11,10 +11,10 @@ const routes = [
 ]
 
 export const BookingRoutes: React.SFC<{}> = () => (
-    <React.Fragment>
+    <>
         <Topbar routes={routes} />
 
         <Route exact path="/booking/calendar" component={Cal} />
         <Route exact path="/booking/addBooking" component={AddBooking} />
-    </React.Fragment>
+    </>
 )
