@@ -6,8 +6,8 @@ import { Dashboard } from '../Views/Dashboard'
 
 export const DashboardRoutes: React.SFC<{}> = () => (
     <>
-        <Topbar routes={[{ name: 'Dashboardddd', path: '/dashboard/index' }]} />
+        <Topbar routes={[{ name: 'Dashboard', path: '/' }]} />
 
-        <Route path="/dashboard/index" component={Dashboard} />
+        <Route exact path="/" component={Dashboard} />
     </>
 )

@@ -1,45 +1,36 @@
 import * as React from 'react'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
+
 import { Container, Icons, DashboardIcon } from './style'
-import { Link } from 'react-router-dom'
 
-export class Sidebar extends React.Component {
-    state = {
-        active: 0
-    }
-
-    handleClick = (index: number) => this.setState({ active: index })
+class C extends React.Component<RouteComponentProps<{}>> {
+    navigate = (path: string) => this.props.history.push(path)
 
     render() {
-        const { active } = this.state
+        const {
+            location: { pathname }
+        } = this.props
+
         return (
             <Container>
                 <Icons>
-                    <Link to="/">
-                        <DashboardIcon
-                            active={active === 0 ? 1 : 0}
-                            onClick={() => this.handleClick(0)}
-                        />
-                    </Link>
-                    <Link to="/booking/calendar">
-                        <DashboardIcon
-                            active={active === 1 ? 1 : 0}
-                            onClick={() => this.handleClick(1)}
-                        />
-                    </Link>
                     <DashboardIcon
-                        active={active === 2 ? 1 : 0}
-                        onClick={() => this.handleClick(2)}
+                        active={pathname === '/' ? 1 : 0}
+                        onClick={() => this.navigate('/')}
                     />
+
                     <DashboardIcon
-                        active={active === 3 ? 1 : 0}
-                        onClick={() => this.handleClick(3)}
+                        active={pathname.includes('/booking') === true ? 1 : 0}
+                        onClick={() => this.navigate('/booking/calendar')}
                     />
-                    <DashboardIcon
-                        active={active === 4 ? 1 : 0}
-                        onClick={() => this.handleClick(4)}
-                    />
+
+                    <DashboardIcon active={0} />
+
+                    <DashboardIcon active={0} />
                 </Icons>
             </Container>
         )
     }
 }
+
+export const Sidebar = withRouter(C)
