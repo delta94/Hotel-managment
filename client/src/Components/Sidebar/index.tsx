@@ -20,7 +20,7 @@ export class Sidebar extends React.Component {
                             onClick={() => this.handleClick(0)}
                         />
                     </Link>
-                    <Link to="/booking">
+                    <Link to="/booking/calendar">
                         <DashboardIcon
                             active={active === 1 ? 1 : 0}
                             onClick={() => this.handleClick(1)}

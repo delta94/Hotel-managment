@@ -1,20 +1,21 @@
 import * as React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
 
-import { Booking } from '../Views/Booking'
 import { Sidebar } from '../Components/Sidebar'
 import { Layout } from '../Components/Layout'
-import { Dashboard } from '../Views/Dashboard'
+
+import { DashboardRoutes } from './Dashboard'
+import { BookingRoutes } from './Booking'
 
 export const Routes: React.SFC = () => (
     <BrowserRouter>
         <React.Fragment>
             <Sidebar />
             <Layout>
-                <Switch>
-                    <Route exact path="/" component={Dashboard} />
-                    <Route exact path="/booking" component={Booking} />
-                </Switch>
+                <React.Fragment>
+                    <Route exact path="/" component={DashboardRoutes} />
+                    <Route path="/booking" component={BookingRoutes} />
+                </React.Fragment>
             </Layout>
         </React.Fragment>
     </BrowserRouter>

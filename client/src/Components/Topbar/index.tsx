@@ -1,9 +1,10 @@
 import * as React from 'react'
-import { Container, Item } from './style'
 import { withRouter, RouteComponentProps } from 'react-router'
 
-interface State {
-    index: number
+import { Container, Item } from './style'
+
+interface Props {
+    routes: Routes[]
 }
 
 interface Routes {
@@ -11,29 +12,22 @@ interface Routes {
     path: string
 }
 
-interface Props {
-    routes: Routes[]
-}
-
-class C extends React.Component<RouteComponentProps<Props> & Props, State> {
-    state = {
-        index: 0
-    }
-
-    handleChane = (index: number, path: string) => {
-        this.setState({ index })
-        this.props.history.push(path)
-    }
+class C extends React.Component<RouteComponentProps<{}> & Props, {}> {
+    navigate = (path: string) => this.props.history.push(path)
 
     render() {
-        const { index } = this.state
-        const { routes } = this.props
+        const {
+            routes,
+            location: { pathname }
+        } = this.props
+
         return (
             <Container>
                 {routes.map((route, i) => (
                     <Item
-                        active={index === i}
-                        onClick={() => this.handleChane(i, route.path)}
+                        key={i}
+                        active={pathname === route.path}
+                        onClick={() => this.navigate(route.path)}
                     >
                         {route.name}
                     </Item>
