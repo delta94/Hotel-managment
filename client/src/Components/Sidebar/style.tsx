@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 
-import { MdDashboard } from 'react-icons/lib/md'
+import { MdDashboard, MdHotel, MdGroup } from 'react-icons/lib/md'
+import { FaTags } from 'react-icons/lib/fa'
 
 interface IconProps {
     active: number
@@ -25,6 +26,70 @@ export const Icons = styled.div`
     justify-content: space-around;
 `
 export const DashboardIcon = styled(MdDashboard)<IconProps>`
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    color: #b8b8c7;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    ${props =>
+        props.active &&
+        css`
+            background-color: white;
+            color: ${props.theme.primary};
+            box-shadow: 0px 0px 15px lightgray;
+        `};
+
+    &:hover {
+        color: ${props => props.theme.primary};
+    }
+`
+
+export const TagIcon = styled(FaTags)<IconProps>`
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    color: #b8b8c7;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    ${props =>
+        props.active &&
+        css`
+            background-color: white;
+            color: ${props.theme.primary};
+            box-shadow: 0px 0px 15px lightgray;
+        `};
+
+    &:hover {
+        color: ${props => props.theme.primary};
+    }
+`
+export const HotelIcon = styled(MdHotel)<IconProps>`
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    color: #b8b8c7;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    ${props =>
+        props.active &&
+        css`
+            background-color: white;
+            color: ${props.theme.primary};
+            box-shadow: 0px 0px 15px lightgray;
+        `};
+
+    &:hover {
+        color: ${props => props.theme.primary};
+    }
+`
+export const UsersIcon = styled(MdGroup)<IconProps>`
     width: 40px;
     height: 40px;
     padding: 10px;
