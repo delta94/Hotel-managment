@@ -14,7 +14,6 @@ export const Row = styled.div`
     flex-direction: row;
     justify-content: space-between;
 `
-
 export const Item = styled.div`
     width: 48%;
     height: 100%;
