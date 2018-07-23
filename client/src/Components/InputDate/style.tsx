@@ -1,6 +1,11 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+interface InputProps {
+    marginLeft?: boolean
+}
+
+export const Container = styled.div<InputProps>`
+    margin-left: ${props => (props.marginLeft ? '20px' : '0')};
     padding: 7px;
     border-radius: 4px;
     border: 1px solid lightgray;

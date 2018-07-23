@@ -42,6 +42,7 @@ export const Button = styled.div`
     box-sizing: border-box;
     cursor: pointer;
     transition: all 200ms ease;
+    user-select: none;
 
     &:hover {
         background-color: #5e65ba;

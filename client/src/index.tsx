@@ -1,11 +1,12 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
+import { Provider } from 'unstated'
 import { injectGlobal, ThemeProvider } from 'styled-components'
 
 import registerServiceWorker from './registerServiceWorker'
 import { Routes } from './Routes'
 import { theme } from './Theme'
-import { Provider } from 'unstated'
+import { ModalRoot } from 'src/Components/Modal'
 
 // tslint:disable-next-line
 injectGlobal`
@@ -25,6 +26,7 @@ ReactDOM.render(
     <ThemeProvider theme={theme}>
         <Provider>
             <Routes />
+            <ModalRoot />
         </Provider>
     </ThemeProvider>,
     document.getElementById('root') as HTMLElement
