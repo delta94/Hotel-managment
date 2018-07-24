@@ -1,13 +1,10 @@
 import * as React from 'react'
 import { Subscribe } from 'unstated'
 
-import { InputDate } from 'src/Components/InputDate'
+import { Input } from 'src/Components/Input'
 import { ModalContainer } from 'src/Components/Modal'
+import { ModalUser } from '../ModalUser'
 import { Container, Title, Subtitle, Row, Button, PlusIcon } from './style'
-
-const modal1: React.SFC<any> = ({ hideModal }) => {
-    return <p onClick={hideModal}>modal1</p>
-}
 
 export const BookingDetails: React.SFC<{}> = () => (
     <Container>
@@ -18,7 +15,7 @@ export const BookingDetails: React.SFC<{}> = () => (
 
             <Subscribe to={[ModalContainer]}>
                 {({ showModal }: ModalContainer) => (
-                    <Button onClick={() => showModal(modal1)}>
+                    <Button onClick={() => showModal(ModalUser)}>
                         <PlusIcon />
                         Add client details
                     </Button>
@@ -29,14 +26,13 @@ export const BookingDetails: React.SFC<{}> = () => (
         <Row>
             <Subtitle>Arrival date</Subtitle>
 
-            <InputDate type="date" />
-            <InputDate type="time" marginLeft />
+            <Input type="datetime-local" onChange={text => console.log(text)} />
         </Row>
 
         <Row>
             <Subtitle>Departure date</Subtitle>
 
-            <InputDate type="date" />
+            <Input type="date" onChange={text => console.log(text)} />
         </Row>
     </Container>
 )

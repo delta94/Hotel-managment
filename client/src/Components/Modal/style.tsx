@@ -1,5 +1,7 @@
 import styled, { keyframes } from 'styled-components'
 
+import { MdClose } from 'react-icons/lib/md'
+
 const fade = keyframes`
     from {
         opacity: 0;
@@ -24,10 +26,23 @@ export const Overlay = styled.div`
 
     animation: ${fade} 0.3s ease;
 `
-
 export const Content = styled.div`
     width: 1200px;
-    padding: 40px;
+    padding: 40px 40px 0 40px;
+    position: relative;
     border-radius: 4px;
     background-color: white;
+`
+export const CloseIcon = styled(MdClose)`
+    color: black;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 200ms ease;
+
+    &:hover {
+        transform: rotate(90deg);
+    }
 `

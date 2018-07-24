@@ -1,13 +1,12 @@
 import * as React from 'react'
 import { Container, Subscribe } from 'unstated'
 
-import { Overlay, Content } from './style'
+import { Overlay, Content, CloseIcon } from './style'
 
 interface State {
     component: any
     props: any
 }
-// const lol = () => null
 
 export class ModalContainer extends Container<State> {
     state = {
@@ -27,6 +26,7 @@ export const ModalRoot: React.SFC = ({ children }) => (
             Component && (
                 <Overlay>
                     <Content>
+                        <CloseIcon onClick={hideModal} />
                         <Component {...props} hideModal={hideModal} />
                     </Content>
                 </Overlay>
