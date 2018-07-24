@@ -1,11 +1,13 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
+import { ApolloProvider } from 'react-apollo'
 import { Provider } from 'unstated'
 import { injectGlobal, ThemeProvider } from 'styled-components'
 
 import registerServiceWorker from './registerServiceWorker'
 import { Routes } from './Routes'
 import { theme } from './Theme'
+import { client } from './apollo'
 import { ModalRoot } from 'src/Components/Modal'
 
 // tslint:disable-next-line
@@ -24,10 +26,12 @@ injectGlobal`
 
 ReactDOM.render(
     <ThemeProvider theme={theme}>
-        <Provider>
-            <Routes />
-            <ModalRoot />
-        </Provider>
+        <ApolloProvider client={client}>
+            <Provider>
+                <Routes />
+                <ModalRoot />
+            </Provider>
+        </ApolloProvider>
     </ThemeProvider>,
     document.getElementById('root') as HTMLElement
 )
