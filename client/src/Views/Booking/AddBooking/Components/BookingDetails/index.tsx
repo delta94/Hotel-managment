@@ -3,8 +3,9 @@ import { Subscribe } from 'unstated'
 
 import { Input } from 'src/Components/Input'
 import { ModalContainer } from 'src/Components/Modal'
+import { AddButon } from 'src/Components/Buttons'
 import { ModalUser } from '../ModalUser'
-import { Container, Title, Subtitle, Row, Button, PlusIcon } from './style'
+import { Container, Title, Subtitle, Row } from './style'
 
 export const BookingDetails: React.SFC<{}> = () => (
     <Container>
@@ -15,10 +16,11 @@ export const BookingDetails: React.SFC<{}> = () => (
 
             <Subscribe to={[ModalContainer]}>
                 {({ showModal }: ModalContainer) => (
-                    <Button onClick={() => showModal(ModalUser)}>
-                        <PlusIcon />
-                        Add client details
-                    </Button>
+                    <AddButon
+                        title="Add client details"
+                        width={200}
+                        onClick={() => showModal(ModalUser)}
+                    />
                 )}
             </Subscribe>
         </Row>

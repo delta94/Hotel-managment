@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import { BookingDetails } from './Components/BookingDetails'
+import { Rooms } from './Components/Rooms'
 import { Container, Row, Item } from './style'
 
 export const AddBooking: React.SFC<{}> = () => (
@@ -11,7 +12,7 @@ export const AddBooking: React.SFC<{}> = () => (
         </Row>
 
         <Row>
-            <Item />
+            <Rooms />
             <Item />
         </Row>
     </Container>
