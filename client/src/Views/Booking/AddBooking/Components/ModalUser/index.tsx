@@ -1,19 +1,63 @@
 import * as React from 'react'
-// import * as lodash from 'lodash'
+import * as _ from 'lodash'
+import { withApollo } from 'react-apollo'
+import { ApolloClient } from 'apollo-client'
+import gql from 'graphql-tag'
 
 import { Input } from 'src/Components/Input'
 import { InputWrapper, UserList, UserAvatar, User, UserEmail } from './style'
 
 interface State {
     email: string
+    users: User[]
 }
 
-export class ModalUser extends React.Component<{}, State> {
-    state = {
-        email: ''
+interface Props {
+    client: ApolloClient<any>
+}
+
+interface User {
+    id: number
+    email: string
+}
+
+class C extends React.Component<Props, State> {
+    debounce: any
+
+    constructor(props: Props) {
+        super(props)
+        this.debounce = _.debounce(this.fetchUsers, 300)
+
+        this.state = {
+            email: '',
+            users: Array<User>()
+        }
     }
 
-    changeEmail = (email: string) => this.setState({ email })
+    componentDidMount() {
+        this.fetchUsers()
+    }
+
+    fetchUsers = async () => {
+        const { email } = this.state
+
+        const users = await this.props.client.query<any>({
+            query: gql`
+                {
+                    users(pattern: "${email}") {
+                        id,
+                        email
+                    }
+                }
+            `
+        })
+        this.setState({ users: users.data.users, email })
+    }
+
+    handleInput = (email: string) => {
+        this.setState({ email })
+        this.debounce()
+    }
 
     render() {
         return (
@@ -22,15 +66,15 @@ export class ModalUser extends React.Component<{}, State> {
                     <Input
                         type="text"
                         placeholder="Search for user..."
-                        onChange={text => this.changeEmail(text)}
+                        onChange={text => this.handleInput(text)}
                     />
                 </InputWrapper>
 
                 <UserList>
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(i => (
-                        <User key={i}>
+                    {this.state.users.map(user => (
+                        <User key={user.id}>
                             <UserAvatar />
-                            <UserEmail>marcin@miler.com</UserEmail>
+                            <UserEmail>{user.email}</UserEmail>
                         </User>
                     ))}
                 </UserList>
@@ -38,3 +82,5 @@ export class ModalUser extends React.Component<{}, State> {
         )
     }
 }
+
+export const ModalUser = withApollo(C)
