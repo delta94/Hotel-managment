@@ -15,7 +15,7 @@ export interface ServicesQuery_services {
 }
 
 export interface ServicesQuery {
-  services: (ServicesQuery_services | null)[] | null;
+  services: ServicesQuery_services[] | null;
 }
 
 /* tslint:disable */

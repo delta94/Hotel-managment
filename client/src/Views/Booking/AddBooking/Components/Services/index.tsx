@@ -1,30 +1,27 @@
 import * as React from 'react'
-import { Container, Title, Row, Text, List } from './style'
-import { Checkbox } from '../../../../../Components/Checkbox'
+import { compose } from 'react-apollo'
 
-export const Services: React.SFC<{}> = () => (
+import {
+    withServices,
+    WithServicesQuery
+} from '../../../../../graphql/services'
+import { Checkbox } from '../../../../../Components/Checkbox'
+import { Container, Title, Row, Text, List } from './style'
+
+export const C: React.SFC<WithServicesQuery> = ({ services }) => (
     <Container>
         <Title>Services</Title>
         <List>
-            <Row>
-                <Checkbox onClick={() => null} />
-                <Text>Airport pickup / $10 - per person</Text>
-            </Row>
-
-            <Row>
-                <Checkbox onClick={() => null} />
-                <Text>Parking / 5$ - per day</Text>
-            </Row>
-
-            <Row>
-                <Checkbox onClick={() => null} />
-                <Text>Breakfast / $7 - per day</Text>
-            </Row>
-
-            <Row>
-                <Checkbox onClick={() => null} />
-                <Text>Wifi / $15</Text>
-            </Row>
+            {services.map(service => (
+                <Row key={service.id}>
+                    <Checkbox onClick={() => null} />
+                    <Text>
+                        {service.name} / ${service.price}
+                    </Text>
+                </Row>
+            ))}
         </List>
     </Container>
 )
+
+export const Services = compose(withServices)(C)
