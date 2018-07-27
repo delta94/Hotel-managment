@@ -1,11 +1,8 @@
 import * as React from 'react'
 import { compose } from 'react-apollo'
 
-import {
-    withServices,
-    WithServicesQuery
-} from '../../../../../graphql/services'
-import { Checkbox } from '../../../../../Components/Checkbox'
+import { withServices, WithServicesQuery } from 'src/graphql/services'
+import { Checkbox } from 'src/Components/Checkbox'
 import { Container, Title, Row, Text, List } from './style'
 
 export const C: React.SFC<WithServicesQuery> = ({ services }) => (

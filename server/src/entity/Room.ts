@@ -5,6 +5,11 @@ import { Reservation } from './Reservation'
 export class Room extends BaseEntity {
     @PrimaryColumn() roomNumber: number
 
+    @Column() type: string
+
+    @Column({ default: false })
+    isAvilable: boolean
+
     @Column() price: number
 
     @Column() people: number

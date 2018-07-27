@@ -6,5 +6,5 @@ type Service {
 }
 
 type Query {
-    services: [Service]
+    services: [Service!]
 }
