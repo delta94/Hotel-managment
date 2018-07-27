@@ -6,10 +6,12 @@ import {
     OneToOne,
     JoinColumn,
     ManyToMany,
-    JoinTable
+    JoinTable,
+    OneToMany
 } from 'typeorm'
 import { User } from './User'
 import { Room } from './Room'
+import { Service } from './Service'
 
 @Entity()
 export class Reservation extends BaseEntity {
@@ -26,6 +28,9 @@ export class Reservation extends BaseEntity {
     @ManyToMany(() => Room, room => room.reservations)
     @JoinTable()
     rooms: Room[]
+
+    @OneToMany(() => Service, service => service.reservations)
+    services: Service[]
 
     @OneToOne(() => User)
     @JoinColumn()

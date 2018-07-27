@@ -1,0 +1,10 @@
+type Service {
+    id: Int!
+    name: String!
+    price: Int!
+    priceCategory: String!
+}
+
+type Query {
+    services: [Service]
+}

@@ -1,0 +1,9 @@
+input addServiceInput {
+    name: String!
+    price: Int!
+    priceCategory: String!
+}
+
+type Mutation {
+    addService(input: addServiceInput!): Service!
+}
