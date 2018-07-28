@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import { withRooms, WithRoomsQuery } from '../../../../../graphql/rooms'
 import {
     RoomList,
     Room,
@@ -11,32 +12,34 @@ import {
     OrderIcon
 } from './style'
 
-export const ModalRoom: React.SFC<{}> = () => (
+const C: React.SFC<WithRoomsQuery> = ({ rooms, loading }) => (
     <>
         <RoomList>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map(i => (
-                <Room key={i}>
+            {rooms.map(room => (
+                <Room key={room.roomNumber}>
                     <Wrapper>
-                        <RoomType>Ap</RoomType>
-                        <Text>Apartament</Text>
+                        <RoomType>{room.type.substring(0, 2)}</RoomType>
+                        <Text>{room.type}</Text>
                     </Wrapper>
 
                     <Wrapper>
                         <OrderIcon />
-                        <Text>003</Text>
+                        <Text>{room.roomNumber}</Text>
                     </Wrapper>
 
                     <Wrapper>
                         <PeopleIcon />
-                        <Text>4</Text>
+                        <Text>{room.people}</Text>
                     </Wrapper>
 
                     <Wrapper>
                         <WalletIcon />
-                        <Text>$ 50</Text>
+                        <Text>$ {room.price}</Text>
                     </Wrapper>
                 </Room>
             ))}
         </RoomList>
     </>
 )
+
+export const ModalRoom = withRooms(C)

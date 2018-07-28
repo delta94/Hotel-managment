@@ -1,7 +1,9 @@
 type Room {
     roomNumber: Int!
+    type: String!
     price: Int!
     people: Int!
+    isAvailable: Boolean!
     reservations: [Reservation]
 }
 

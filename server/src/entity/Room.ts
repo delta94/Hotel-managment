@@ -8,7 +8,7 @@ export class Room extends BaseEntity {
     @Column() type: string
 
     @Column({ default: false })
-    isAvilable: boolean
+    isAvailable: boolean
 
     @Column() price: number
 
